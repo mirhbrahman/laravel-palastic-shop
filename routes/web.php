@@ -19,4 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Admin area
+Route::group(['prefix' => 'admin'], function () {
+    // Product route
+    Route::group(['prefix' => 'product'], function () {
+        // Product type
+        Route::resource('productTypes', 'Product\ProductTypeController', ['as'=>'product']);
+        // Product category
+        Route::resource('productCategories', 'Product\ProductCategoryController', ['as'=>'product']);
+        // Product sub category
+        Route::resource('productSubCategories', 'Product\ProductSubCategoryController', ['as'=>'product']);
+    });
+});
 
