@@ -45,3 +45,13 @@ Route::group(['prefix' => 'product'], function () {
     Route::resource('productSizes', 'Product\ProductSizeController', ['as'=>'product']);
 });
 
+
+
+Route::get('product/products', ['as'=> 'product.products.index', 'uses' => 'Product\ProductController@index']);
+Route::post('product/products', ['as'=> 'product.products.store', 'uses' => 'Product\ProductController@store']);
+Route::get('product/products/create', ['as'=> 'product.products.create', 'uses' => 'Product\ProductController@create']);
+Route::put('product/products/{products}', ['as'=> 'product.products.update', 'uses' => 'Product\ProductController@update']);
+Route::patch('product/products/{products}', ['as'=> 'product.products.update', 'uses' => 'Product\ProductController@update']);
+Route::delete('product/products/{products}', ['as'=> 'product.products.destroy', 'uses' => 'Product\ProductController@destroy']);
+Route::get('product/products/{products}', ['as'=> 'product.products.show', 'uses' => 'Product\ProductController@show']);
+Route::get('product/products/{products}/edit', ['as'=> 'product.products.edit', 'uses' => 'Product\ProductController@edit']);
