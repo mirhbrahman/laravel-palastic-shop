@@ -3,11 +3,32 @@
 <li class="treeview">
     <a href="#">
       <i class="fa fa-pie-chart"></i>
-      <span>Product  Section</span>
+      <span>User</span>
       <span class="pull-right-container">
         <i class="fa fa-angle-left pull-right"></i>
       </span>
     </a>
+    <ul class="treeview-menu" style="display: none;">
+        <li class="{{ Request::is('productSizes*') ? 'active' : '' }}">
+            <a href="{!! route('user.create') !!}"><i class="fa fa-edit"></i><span>Create user</span></a>
+        </li>
+        <li class="{{ Request::is('productSizes*') ? 'active' : '' }}">
+            <a href="{!! route('user.index') !!}"><i class="fa fa-edit"></i><span>All user</span></a>
+        </li>
+        <li class="{{ Request::is('productSizes*') ? 'active' : '' }}">
+            <a href="{!! route('setting') !!}"><i class="fa fa-edit"></i><span>Setting</span></a>
+        </li>
+    </ul>
+</li>
+
+<li class="treeview">
+    <a href="#">
+          <i class="fa fa-pie-chart"></i>
+          <span>Product  Section</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
     <ul class="treeview-menu" style="display: none;">
         <li class="{{ Request::is('productTypes*') ? 'active' : '' }}">
             <a href="{!! route('product.productTypes.index') !!}"><i class="fa fa-edit"></i><span>Product Types</span></a>
@@ -46,14 +67,7 @@
         </li>
 
     </ul>
-</li><li class="{{ Request::is('products*') ? 'active' : '' }}">
+</li>
+<li class="{{ Request::is('products*') ? 'active' : '' }}">
     <a href="{!! route('product.products.index') !!}"><i class="fa fa-edit"></i><span>Products</span></a>
 </li>
-
-
-<ul>
-  <li><a href="{{ route('user.create') }}">Create user</a></li>
-  <li><a href="{{ route('user.index') }}">All user</a></li>
-  <li><a href="{{ route('setting') }}">Setting</a></li>
-</ul>
-
