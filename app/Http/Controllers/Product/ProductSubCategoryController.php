@@ -46,8 +46,7 @@ class ProductSubCategoryController extends AppBaseController
     public function create()
     {
         return view('product.product_sub_categories.create')
-        ->with('product_types', ProductTypeModel::pluck('name','id')->toArray())
-        ->with('product_categories', ProductCategoryModel::pluck('name','id')->toArray());
+        ->with('product_types', ProductTypeModel::all());
     }
 
     /**
@@ -107,8 +106,8 @@ class ProductSubCategoryController extends AppBaseController
 
         return view('product.product_sub_categories.edit')
         ->with('productSubCategory', $productSubCategory)
-        ->with('product_types', ProductTypeModel::pluck('name','id')->toArray())
-        ->with('product_categories', ProductCategoryModel::pluck('name','id')->toArray());
+        ->with('product_types', ProductTypeModel::all())
+        ->with('product_categories', ProductCategoryModel::all());
     }
 
     /**
