@@ -50,3 +50,10 @@
     <a href="{!! route('product.products.index') !!}"><i class="fa fa-edit"></i><span>Products</span></a>
 </li>
 
+
+<ul>
+  <li><a href="{{ route('user.create') }}">Create user</a></li>
+  <li><a href="{{ route('user.index') }}">All user</a></li>
+  <li><a href="{{ route('setting') }}">Setting</a></li>
+</ul>
+

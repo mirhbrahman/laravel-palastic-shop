@@ -22,6 +22,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Admin area
 Route::group(['prefix' => 'admin'], function () {
     
+    Route::resource('user', 'Admin\User\UsersController')->except(['destroy']);
+    Route::get('users/{id}', 'Admin\User\UsersController@destroy')->name('users.destroy');
+
+    Route::get('verify/{id}', 'Admin\User\UsersController@verify')->name('verify');
+    Route::get('unverify/{id}', 'Admin\User\UsersController@unverify')->name('unverify');
+
+    Route::get('active/{id}', 'Admin\User\UsersController@active')->name('active');
+    Route::get('deactive/{id}', 'Admin\User\UsersController@deactive')->name('deactive');
+
+    Route::get('admin/{id}', 'Admin\User\UsersController@admin')->name('admin');
+    Route::get('regular/{id}', 'Admin\User\UsersController@regular')->name('regular');
+
+    Route::get('setting/change-pass', 'Admin\User\UsersController@setting')->name('setting');
+    Route::put('change-pass', 'Admin\User\UsersController@changePass')->name('changePass');
+
 });
 
 // Product route
@@ -43,15 +58,8 @@ Route::group(['prefix' => 'product'], function () {
     Route::resource('productColors', 'Product\ProductColorController', ['as'=>'product']);
     // Product color
     Route::resource('productSizes', 'Product\ProductSizeController', ['as'=>'product']);
+
+    // Product 
+    Route::resource('products', 'Product\ProductController', ['as'=>'product']);
+
 });
-
-
-
-Route::get('product/products', ['as'=> 'product.products.index', 'uses' => 'Product\ProductController@index']);
-Route::post('product/products', ['as'=> 'product.products.store', 'uses' => 'Product\ProductController@store']);
-Route::get('product/products/create', ['as'=> 'product.products.create', 'uses' => 'Product\ProductController@create']);
-Route::put('product/products/{products}', ['as'=> 'product.products.update', 'uses' => 'Product\ProductController@update']);
-Route::patch('product/products/{products}', ['as'=> 'product.products.update', 'uses' => 'Product\ProductController@update']);
-Route::delete('product/products/{products}', ['as'=> 'product.products.destroy', 'uses' => 'Product\ProductController@destroy']);
-Route::get('product/products/{products}', ['as'=> 'product.products.show', 'uses' => 'Product\ProductController@show']);
-Route::get('product/products/{products}/edit', ['as'=> 'product.products.edit', 'uses' => 'Product\ProductController@edit']);
