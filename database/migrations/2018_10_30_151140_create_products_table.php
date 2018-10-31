@@ -35,9 +35,9 @@ class CreateProductsTable extends Migration
             $table->boolean('is_feature')->nullable();
             $table->boolean('is_special')->nullable();
             $table->float('special_price', 10, 4)->nullable();
-            $table->boolean('special_status')->nullable();
+            $table->boolean('special_status')->nullable()->nullable();
             $table->boolean('in_stock')->nullable()->default(0);
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->nullable()->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

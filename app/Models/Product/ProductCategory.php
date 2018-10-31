@@ -54,4 +54,8 @@ class ProductCategory extends Model
     public function product_type(){
         return $this->belongsTo('App\Models\Product\ProductType', 'product_type_id');
     }
+
+    public function product_sub_categories(){
+        return $this->hasMany('App\Models\Product\ProductSubCategory', 'product_category_id');
+    }
 }
