@@ -125,46 +125,25 @@
 				<!-- deals -->
 				<div class="deal-leftmk left-side">
 					<h3 class="agileits-sear-head">Special Deals</h3>
-					<div class="special-sec1">
-						<div class="col-xs-4 img-deals">
-							<img src="images/d2.jpg" alt="">
-						</div>
-						<div class="col-xs-8 img-deal1">
-							<h3>Lay's Potato Chips</h3>
-							<a href="single.html">$18.00</a>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="special-sec1">
-						<div class="col-xs-4 img-deals">
-							<img src="images/d1.jpg" alt="">
-						</div>
-						<div class="col-xs-8 img-deal1">
-							<h3>Bingo Mad Angles</h3>
-							<a href="single.html">$9.00</a>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="special-sec1">
-						<div class="col-xs-4 img-deals">
-							<img src="images/d4.jpg" alt="">
-						</div>
-						<div class="col-xs-8 img-deal1">
-							<h3>Tata Salt</h3>
-							<a href="single.html">$15.00</a>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="special-sec1">
-						<div class="col-xs-4 img-deals">
-							<img src="images/d5.jpg" alt="">
-						</div>
-						<div class="col-xs-8 img-deal1">
-							<h3>Gujarat Dry Fruit</h3>
-							<a href="single.html">$525.00</a>
-						</div>
-						<div class="clearfix"></div>
-					</div>
+					
+					@isset ($recent_products)
+					    @if ($recent_products)
+					    	@foreach ($recent_products->slice(0, 4) as $f_product)
+					    		<div class="special-sec1">
+									<div class="col-xs-4 img-deals">
+										<img width="70" height="70" src="{{ asset('imgs/default_'. rand(1, 3) . '.jpg') }}" alt="">
+									</div>
+									<div class="col-xs-8 img-deal1">
+										<h3>Lay's Potato Chips</h3>
+										<a href="single.html">$18.00</a>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+					    	@endforeach
+					    @endif
+					@endisset
+
+					
 					
 				</div>
 				<!-- //deals -->
