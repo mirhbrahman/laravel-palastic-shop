@@ -10,8 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Frontend
+// Home
 Route::get('/', 'Front\FrontController@home');
+//Product by category
+Route::get('/category/{slug}', 'Front\FrontController@product_by_category')->name('front.product_by_category');
 
 Auth::routes();
 

@@ -1,12 +1,22 @@
 @extends('layouts.front')
 
 @section('content')
+
+ @if (isset($search_category) && $search_category)
+ @else
+ 	<!-- banner -->
+	@include('partials.front.home.banner')
+	<!-- //banner -->
+ @endif
+
 <!-- top Products -->
 	<div class="ads-grid">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Our Top Products
-				
+			<h3 class="tittle-w3l">Our Products 
+				@if (isset($search_category) && $search_category)
+					- Category: {{ $search_category->name }}
+				@endif
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -23,7 +33,13 @@
 				<div class="wrapper">
 					<!-- first section (nuts) -->
 					<div class="product-sec1">
-						<h3 class="heading-tittle">Recent Products</h3>
+						<h3 class="heading-tittle">
+							@if (isset($search_category) && $search_category)
+								{{ $search_category->name }} Products
+							@else
+								Recent Products
+							@endif
+						</h3>
 						
 						@if ($recent_products)
 							@foreach ($recent_products as $product)
@@ -40,7 +56,7 @@
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">{{ $product->name }}</a>
+										<a href="single.html">{{ str_limit($product->name, 20) }}</a>
 									</h4>
 									<div class="info-product-price">
 										@if ($product->is_special)
@@ -75,12 +91,15 @@
 						@endforeach
 						@endif
 						
-						<div class="clearfix"></div>
+						<div class="clearfix text-center">
+							@if ($recent_products)
+								@if ($recent_products->links())
+									{{ $recent_products->links() }}
+								@endif
+							@endif
+						</div>
 					</div>
-					
-
-
-
+				
 				</div>
 			</div>
 			<!-- //product right -->

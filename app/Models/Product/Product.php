@@ -118,6 +118,7 @@ class Product extends Model
         return $this->belongsTo('App\User');
     }
 
+    // Single value
     public function product_type(){
         return $this->belongsTo('App\Models\Product\ProductType', 'product_type_id');
     }
@@ -130,4 +131,5 @@ class Product extends Model
     public function product_manufacturer(){
         return $this->belongsTo('App\Models\Product\ProductManufacturer', 'product_manufacturer_id');
     }
+
 }

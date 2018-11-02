@@ -46,9 +46,7 @@
 	<!-- navigation -->
 	@include('partials.front.navbar')
 	<!-- //navigation -->
-	<!-- banner -->
-	@include('partials.front.home.banner')
-	<!-- //banner -->
+	
 
 
 	<div class="">	
