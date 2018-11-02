@@ -13,6 +13,8 @@
 // Frontend
 // Home
 Route::get('/', 'Front\FrontController@home')->name('front.home');
+// Single product
+Route::get('/product/{slug}', 'Front\FrontController@product_single')->name('front.product_single');
 //Product by category
 Route::get('/category/{slug}', 'Front\FrontController@product_by_category')->name('front.product_by_category');
 //Product by sub category

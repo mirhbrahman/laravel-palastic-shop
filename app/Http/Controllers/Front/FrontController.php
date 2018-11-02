@@ -43,4 +43,10 @@ class FrontController extends Controller
 	    ->with('recent_products', $recent_products)
 	    ->with('search_sub_category', $sub_category);
 	}
+
+	public function product_single($slug = ''){
+	    $product = Product::where('slug', $slug)->first();
+	    return view('front.product.single')
+	    ->with('product', $product);
+	}
 }

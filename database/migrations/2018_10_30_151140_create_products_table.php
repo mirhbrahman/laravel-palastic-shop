@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->string('model')->nullable();
             $table->string('key_features')->nullable();
-            $table->text('datails')->nullable();
+            $table->text('details')->nullable();
             $table->text('description')->nullable();
             $table->text('dimension')->nullable();
             $table->string('weight')->nullable();

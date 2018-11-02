@@ -21,7 +21,7 @@ $factory->define(App\Models\Product\Product::class, function (Faker $faker) {
         'slug' => str_slug($name),
         'model' => str_random(3) . $faker->randomNumber(),
         'key_features' => $faker->sentence(2, true),
-        'datails' => $faker->paragraph(2, true),
+        'details' => $faker->paragraph(2, true),
         'description' => $faker->paragraph(2, true),
         'dimension' => $faker->numberBetween(5, 50) . ' X '. $faker->numberBetween(5, 50) . ' X ' . $faker->numberBetween(5, 50),
         'weight' => $faker->numberBetween(1, 5),

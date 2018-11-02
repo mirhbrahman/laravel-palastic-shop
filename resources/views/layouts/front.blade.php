@@ -230,6 +230,7 @@
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
 
+	@yield('scripts')
 	<!-- for bootstrap working -->
 	<script src="{{ asset('js/bootstrap.js') }}"></script>
 	<!-- //for bootstrap working -->
