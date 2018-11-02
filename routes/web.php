@@ -12,9 +12,11 @@
 */
 // Frontend
 // Home
-Route::get('/', 'Front\FrontController@home');
+Route::get('/', 'Front\FrontController@home')->name('front.home');
 //Product by category
 Route::get('/category/{slug}', 'Front\FrontController@product_by_category')->name('front.product_by_category');
+//Product by sub category
+Route::get('/sub-category/{slug}', 'Front\FrontController@product_by_sub_category')->name('front.product_by_sub_category');
 
 Auth::routes();
 

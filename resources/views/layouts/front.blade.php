@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Grocery Shoppy</title>
+	<title>Palastic Shoppy</title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -47,7 +47,6 @@
 	@include('partials.front.navbar')
 	<!-- //navigation -->
 	
-
 
 	<div class="">	
 		@yield('content')

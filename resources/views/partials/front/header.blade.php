@@ -3,10 +3,10 @@
 			<!-- header-bot-->
 			<div class="col-md-4 logo_agile">
 				<h1>
-					<a href="index.html">
-						<span>G</span>rocery
+					<a href="{{ route('front.home') }}">
+						<span>P</span>alastic
 						<span>S</span>hoppy
-						<img src="images/logo2.png" alt=" ">
+						<img src="{{ asset('images/logo2.png') }}" alt=" ">
 					</a>
 				</h1>
 			</div>

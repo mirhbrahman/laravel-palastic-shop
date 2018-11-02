@@ -2,7 +2,7 @@
 
 @section('content')
 
- @if (isset($search_category) && $search_category)
+ @if (isset($search_category) && $search_category || isset($search_sub_category) && $search_sub_category)
  @else
  	<!-- banner -->
 	@include('partials.front.home.banner')
@@ -16,6 +16,8 @@
 			<h3 class="tittle-w3l">Our Products 
 				@if (isset($search_category) && $search_category)
 					- Category: {{ $search_category->name }}
+				@elseif(isset($search_sub_category) && $search_sub_category)
+					-Sub-Category: {{ $search_sub_category->name }}
 				@endif
 				<span class="heading-style">
 					<i></i>
@@ -36,6 +38,8 @@
 						<h3 class="heading-tittle">
 							@if (isset($search_category) && $search_category)
 								{{ $search_category->name }} Products
+							@elseif(isset($search_sub_category) && $search_sub_category)
+								{{ $search_sub_category->name }} Products
 							@else
 								Recent Products
 							@endif
@@ -92,10 +96,8 @@
 						@endif
 						
 						<div class="clearfix text-center">
-							@if ($recent_products)
-								@if ($recent_products->links())
-									{{ $recent_products->links() }}
-								@endif
+							@if ($recent_products instanceof \Illuminate\Pagination\LengthAwarePaginator )
+								{{ $recent_products->links() }}
 							@endif
 						</div>
 					</div>

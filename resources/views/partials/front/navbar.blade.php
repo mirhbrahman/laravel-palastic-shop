@@ -74,7 +74,7 @@
                                             @if ($cat->product_sub_categories)
                                             @foreach ($cat->product_sub_categories as $sub_cat)
                                             <li>
-                                                <a href="product2.html">{{ $sub_cat->name }}</a>
+                                                <a href="{{ route('front.product_by_sub_category', $sub_cat->slug) }}">{{ $sub_cat->name }}</a>
                                             </a>
                                             </li>
                                             @endforeach
