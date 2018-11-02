@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('product_manufacturer_id')->nullable();
             $table->integer('user_id');
             $table->string('name');
+            $table->string('slug');
             $table->string('model')->nullable();
             $table->string('key_features')->nullable();
             $table->text('datails')->nullable();

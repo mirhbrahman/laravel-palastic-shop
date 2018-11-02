@@ -15,7 +15,8 @@ class CreateProductColorsTable extends Migration
     {
         Schema::create('product_colors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('slug');
             $table->string('color_code');
             $table->string('pantone_code')->nullable();
             $table->softDeletes();

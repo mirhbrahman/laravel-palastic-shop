@@ -18,6 +18,7 @@ class CreateProductSubCategoriesTable extends Migration
             $table->integer('product_type_id')->default(0);
             $table->integer('product_category_id')->default(0);
             $table->string('name');
+            $table->string('slug');
             $table->softDeletes();
             $table->timestamps();
         });

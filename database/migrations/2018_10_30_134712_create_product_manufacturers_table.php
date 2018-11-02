@@ -16,6 +16,7 @@ class CreateProductManufacturersTable extends Migration
         Schema::create('product_manufacturers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('slug');
             $table->string('url')->nullable();
             $table->softDeletes();
             $table->timestamps();

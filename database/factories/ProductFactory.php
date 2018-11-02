@@ -3,6 +3,7 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Models\Product\Product::class, function (Faker $faker) {
+    $name = $faker->sentence(4, true);
     return [
         'code' => str_random(10),
         'product_type_id' => 1,
@@ -16,7 +17,8 @@ $factory->define(App\Models\Product\Product::class, function (Faker $faker) {
         'user_id' => function(){
             return App\User::all()->random();
         },
-        'name' => $faker->sentence(4, true),
+        'name' => $name,
+        'slug' => str_slug($name),
         'model' => str_random(3) . $faker->randomNumber(),
         'key_features' => $faker->sentence(2, true),
         'datails' => $faker->paragraph(2, true),

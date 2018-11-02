@@ -6,5 +6,6 @@ $factory->define(App\Models\Product\ProductCategory::class, function (Faker $fak
     return [
         'product_type_id' => 1,
         'name' => 'Kitchen',
+        'slug' => 'kitchen'
     ];
 });
