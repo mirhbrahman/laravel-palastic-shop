@@ -30,6 +30,8 @@ Route::post('cart/checkout/pay', 'Front\CheckoutController@pay')->name('checkout
 
 // About us 
 Route::get('about-us', 'Front\AboutUsController@index')->name('front.about_us');
+// Contact
+Route::get('contact', 'Front\ContactController@index')->name('front.contact');
 
 // Authenticate route
 Auth::routes();
