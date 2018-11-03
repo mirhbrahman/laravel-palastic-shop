@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class ShoppingController extends Controller
 {
     public function add_to_cart(Request $request){
-
+        // Cart::clear();
     	$product = Product::where('id', $request->product_id)
     	->where('code', $request->product_code)
     	->first();

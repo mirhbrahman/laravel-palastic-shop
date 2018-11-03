@@ -1,32 +1,47 @@
 <div class="header-bot">
-		<div class="header-bot_inner_wthreeinfo_header_mid">
-			<!-- header-bot-->
-			<div class="col-md-4 logo_agile">
-				<h1>
-					<a href="{{ route('front.home') }}">
-						<span>P</span>alastic
-						<span>S</span>hoppy
-						<img src="{{ asset('images/logo2.png') }}" alt=" ">
-					</a>
-				</h1>
-			</div>
-			<!-- header-bot -->
-			<div class="col-md-8 header" >
-				<!-- header lists -->
-				<div class="text-right">
-					<ul >
+	<div class="header-bot_inner_wthreeinfo_header_mid">
+		<!-- header-bot-->
+		<div class="col-md-4 logo_agile">
+			<h1>
+				<a href="{{ route('front.home') }}">
+					<span>P</span>alastic
+					<span>S</span>hoppy
+					<img src="{{ asset('images/logo2.png') }}" alt=" ">
+				</a>
+			</h1>
+		</div>
+		<!-- header-bot -->
+		<div class="col-md-8 header" >
+			<!-- header lists -->
+			<div class="text-right">
+				<ul >
 					<li>
 						<span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
 					</li>
+					@if (Auth::check())
 					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal1">
-							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a>
+						<span class="fa fa-user" aria-hidden="true"></span> {{ Auth::user()->name }} </a>
+					</li>
+					<li style="width: 13%">
+						<a href="{!! url('/logout') !!}" class=""
+						onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+						<span class="fa fa-sign-out" aria-hidden="true"></span> Sign out
+					</a>
+					<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+						{{ csrf_field() }}
+					</form>
+				</li>
+				@else
+				<li>
+					<a href="#" data-toggle="modal" data-target="#myModal1">
+						<span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a>
 					</li>
 					<li>
 						<a href="#" data-toggle="modal" data-target="#myModal2">
 							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up </a>
-					</li>
-				</ul>
+						</li>
+						@endif
+					</ul>
 				</div>
 				<!-- //header lists -->
 				<!-- search -->
@@ -42,11 +57,11 @@
 				<!-- cart details -->
 				<div class="top_nav_right">
 					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-							<form method="get" action="{{ route('cart.index') }}">
-								<button style="width: auto;" class="w3view-cart" type="submit">
+						<form method="get" action="{{ route('cart.index') }}">
+							<button style="width: auto;" class="w3view-cart" type="submit">
 								<i class="fa fa-cart-arrow-down" aria-hidden="true"> {{ Cart::getContent()->count() }}</i>
 							</button>
-							</form>
+						</form>
 					</div>
 				</div>
 				<!-- //cart details -->
