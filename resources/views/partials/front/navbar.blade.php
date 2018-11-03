@@ -52,12 +52,12 @@
                 <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav menu__list">
                         <li class="active">
-                            <a class="nav-stylehead" href="index.html">Home
+                            <a class="nav-stylehead" href="{{ route('front.home') }}">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="">
-                            <a class="nav-stylehead" href="about.html">About Us</a>
+                            <a class="nav-stylehead" href="{{ route('front.about_us') }}">About Us</a>
                         </li>
 
                         @isset ($product_categories)

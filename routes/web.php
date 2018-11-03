@@ -20,6 +20,14 @@ Route::get('/category/{slug}', 'Front\FrontController@product_by_category')->nam
 //Product by sub category
 Route::get('/sub-category/{slug}', 'Front\FrontController@product_by_sub_category')->name('front.product_by_sub_category');
 
+// Cart
+Route::post('add-to-cart', 'Front\ShoppingController@add_to_cart')->name('cart.add');
+Route::get('cart', 'Front\ShoppingController@cart')->name('cart.index');
+Route::get('cart/delete/{id}', 'Front\ShoppingController@cart_delete')->name('cart.delete');
+
+// About us 
+Route::get('about-us', 'Front\AboutUsController@index')->name('front.about_us');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

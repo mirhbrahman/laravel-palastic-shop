@@ -63,6 +63,40 @@
 								<span class="item_price">${{ $product->price }}</span>
 								@endif
 							</p>
+
+							<div class="occasion-cart">
+								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<form action="{{ route('cart.add') }}" method="post">
+										@csrf
+										
+										<fieldset>
+											<div class="quantity">
+												Quantity
+
+												<div class="input-group">
+													<span class="input-group-btn">
+														<button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant">
+															<span class="glyphicon glyphicon-minus"></span>
+														</button>
+													</span>
+													<input id='quantity' type="text" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+													<span class="input-group-btn">
+														<button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant">
+															<span class="glyphicon glyphicon-plus"></span>
+														</button>
+													</span>
+												</div>
+											</div>
+											<input type="hidden" name="cmd" value="_cart" />
+											<input type="hidden" name="product_id" value="{{ $product->id }}" />
+											<input type="hidden" name="product_code" value="{{ $product->code }}" />
+										
+											<input type="submit" name="submit" value="Add to cart" class="button" />
+										</fieldset>
+									</form>
+								</div>
+
+							</div>
 							<div class="single-infoagile">
 								<ul>
 									<li>
@@ -85,9 +119,9 @@
 								<ul>
 									{{ $product->dimension }}
 								</ul>
-									
+
 							</div>
-						<div class="product-single-w3l">
+							<div class="product-single-w3l">
 								<p>
 									<i class="fa fa-hand-o-right" aria-hidden="true"></i>
 									<label>Details</label>
@@ -95,9 +129,9 @@
 								<ul>
 									{{ $product->details }}
 								</ul>
-									
+
 							</div>
-						<div class="product-single-w3l">
+							<div class="product-single-w3l">
 								<p>
 									<i class="fa fa-hand-o-right" aria-hidden="true"></i>
 									<label>Description</label>
@@ -105,48 +139,32 @@
 								<ul>
 									{{ $product->description }}
 								</ul>
-									
-							</div>
-								<div class="occasion-cart">
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Zeeba Premium Basmati Rice - 5 KG" />
-												<input type="hidden" name="amount" value="950.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
 
-								</div>
+								
 
 							</div>
-							<div class="clearfix"> </div>
+
+
 						</div>
+						<div class="clearfix"> </div>
 					</div>
-					<!-- //Single Page -->
-					@else
-					<h1 class="text-center">No product found!</h1>
-					@endif
+				</div>
+				<!-- //Single Page -->
+				@else
+				<h1 class="text-center">No product found!</h1>
+				@endif
 
 
 
-					@endsection
+				@endsection
 
-					@section('scripts')
-					<!-- imagezoom -->
-					<script src="{{ asset('js/imagezoom.js') }}"></script>
-					<!-- //imagezoom -->
-					<!-- FlexSlider -->
-					<script src="{{ asset('js/jquery.flexslider.js') }}"></script>
-					<script>
+				@section('scripts')
+				<!-- imagezoom -->
+				<script src="{{ asset('js/imagezoom.js') }}"></script>
+				<!-- //imagezoom -->
+				<!-- FlexSlider -->
+				<script src="{{ asset('js/jquery.flexslider.js') }}"></script>
+				<script>
 		// Can also be used with $(document).ready()
 		$(window).load(function () {
 			$('.flexslider').flexslider({
@@ -156,5 +174,77 @@
 		});
 	</script>
 
+	<script type="text/javascript">
+		$('.btn-number').click(function(e){
+			e.preventDefault();
 
-	@endsection
+			fieldName = $(this).attr('data-field');
+			type      = $(this).attr('data-type');
+			var input = $("#quantity");
+			var currentVal = parseInt(input.val());
+			if (!isNaN(currentVal)) {
+				if(type == 'minus') {
+
+					if(currentVal > input.attr('min')) {
+						input.val(currentVal - 1).change();
+					} 
+					if(parseInt(input.val()) == input.attr('min')) {
+						$(this).attr('disabled', true);
+					}
+
+				} else if(type == 'plus') {
+
+					if(currentVal < input.attr('max')) {
+						input.val(currentVal + 1).change();
+					}
+					if(parseInt(input.val()) == input.attr('max')) {
+						$(this).attr('disabled', true);
+					}
+
+				}
+			} else {
+				input.val(0);
+			}
+		});
+		$('.input-number').focusin(function(){
+			$(this).data('oldValue', $(this).val());
+		});
+		$('.input-number').change(function() {
+
+			minValue =  parseInt($(this).attr('min'));
+			maxValue =  parseInt($(this).attr('max'));
+			valueCurrent = parseInt($(this).val());
+
+			name = $(this).attr('name');
+			if(valueCurrent >= minValue) {
+				$(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+			} else {
+				alert('Sorry, the minimum value was reached');
+				$(this).val($(this).data('oldValue'));
+			}
+			if(valueCurrent <= maxValue) {
+				$(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+			} else {
+				alert('Sorry, the maximum value was reached');
+				$(this).val($(this).data('oldValue'));
+			}
+
+
+		});
+		$(".input-number").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+             // Allow: Ctrl+A
+             (e.keyCode == 65 && e.ctrlKey === true) || 
+             // Allow: home, end, left, right
+             (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 // let it happen, don't do anything
+             return;
+         }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        	e.preventDefault();
+        }
+    });
+</script>
+@endsection

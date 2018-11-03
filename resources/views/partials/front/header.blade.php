@@ -42,13 +42,11 @@
 				<!-- cart details -->
 				<div class="top_nav_right">
 					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-						<form action="#" method="post" class="last">
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="display" value="1">
-							<button class="w3view-cart" type="submit" name="submit" value="">
-								<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+							<form method="get" action="{{ route('cart.index') }}">
+								<button style="width: auto;" class="w3view-cart" type="submit">
+								<i class="fa fa-cart-arrow-down" aria-hidden="true"> {{ Cart::getContent()->count() }}</i>
 							</button>
-						</form>
+							</form>
 					</div>
 				</div>
 				<!-- //cart details -->
