@@ -38,4 +38,5 @@ class ShoppingController extends Controller
     	Cart::remove($id);
     	return redirect()->back();
     }
+
 }

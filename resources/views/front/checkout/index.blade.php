@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h3 class="tittle-w3l">In Your Shopping Cart : {{ Cart::getContent()->count() }} items</h3>
+	<h3 class="tittle-w3l">Your Order</h3>
 	<table id="cart" class="table table-hover ">
     				<thead>
 						<tr>
@@ -28,11 +28,11 @@
 							</td>
 							<td data-th="Price">{{ $item->price }}</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="{{ $item->quantity }}">
+								{{ $item->quantity }}
 							</td>
 							<td data-th="Subtotal" class="text-center">{{ $item->price * $item->quantity }}</td>
 							<td class="actions" data-th="">
-								<a class="btn btn-danger btn-sm" href="{{ route('cart.delete', $item->id) }}"><i class="fa fa-trash-o"></i></a>								
+															
 							</td>
 						</tr>
 						@endforeach
@@ -45,7 +45,24 @@
 							<td><a href="{{ route('front.home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Total {{ number_format(Cart::getTotal()) }}</strong></td>
-							<td><a href="{{ route('checkout.index') }}" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td>
+								<form action="{{ route('checkout.pay') }}" method="POST">
+									@csrf
+									
+								  <script
+								    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+								    data-key="pk_test_arr20NMmOPBNJWZCNBvTZib8"
+								    data-amount="{{ Cart::getTotal() * 100 }}"
+								    data-name="Palastic Shop"
+								    data-description="Product charge"
+								    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+								    data-locale="auto">
+								  </script>
+
+								  
+								</form>
+								
+							</td>
 						</tr>
 					</tfoot>
 				</table>

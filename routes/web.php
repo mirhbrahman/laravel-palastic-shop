@@ -24,6 +24,9 @@ Route::get('/sub-category/{slug}', 'Front\FrontController@product_by_sub_categor
 Route::post('add-to-cart', 'Front\ShoppingController@add_to_cart')->name('cart.add');
 Route::get('cart', 'Front\ShoppingController@cart')->name('cart.index');
 Route::get('cart/delete/{id}', 'Front\ShoppingController@cart_delete')->name('cart.delete');
+// Checkout
+Route::get('cart/checkout', 'Front\CheckoutController@checkout')->name('checkout.index');
+Route::post('cart/checkout/pay', 'Front\CheckoutController@pay')->name('checkout.pay');
 
 // About us 
 Route::get('about-us', 'Front\AboutUsController@index')->name('front.about_us');
