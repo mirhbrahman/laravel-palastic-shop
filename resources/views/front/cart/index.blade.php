@@ -30,7 +30,7 @@
 							<td data-th="Quantity">
 								<input type="number" class="form-control text-center" value="{{ $item->quantity }}">
 							</td>
-							<td data-th="Subtotal" class="text-center">{{ $item->attributes['sub_total'] }}</td>
+							<td data-th="Subtotal" class="text-center">{{ $item->price * $item->quantity }}</td>
 							<td class="actions" data-th="">
 								<a class="btn btn-danger btn-sm" href="{{ route('cart.delete', $item->id) }}"><i class="fa fa-trash-o"></i></a>								
 							</td>
